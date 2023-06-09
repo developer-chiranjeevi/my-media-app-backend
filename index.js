@@ -14,6 +14,8 @@ const enrollStudent = require("./routes/student/enrollStudent");
 const studentList = require("./routes/course/studentList");
 const createAssignment = require("./routes/assignment/createAssignment");
 const deleteAssignment = require("./routes/assignment/deleteAssignment");
+const courseAssignments = require("./routes/course/courseAssignments");
+const studentAssignments = require("./routes/student/studentAssignments");
 
 //root end-points
 app.use("/",home);
@@ -21,9 +23,11 @@ app.use("/",home);
 app.use("/createstudent",createStudent);
 app.use("/deletestudent",deleteStudent);
 app.use("/enrollstudent",enrollStudent);
+app.use("/studentAssignments",studentAssignments);
 //course end-points
 app.use("/createCourse",createCourse);
 app.use("/studentList",studentList);
+app.use("/assignmentList",courseAssignments);
 //assignment end-points
 app.use("/createAssignment",createAssignment);
 app.use("/deleteAssignment",deleteAssignment);
