@@ -16,6 +16,10 @@ const createAssignment = require("./routes/assignment/createAssignment");
 const deleteAssignment = require("./routes/assignment/deleteAssignment");
 const courseAssignments = require("./routes/course/courseAssignments");
 const studentAssignments = require("./routes/student/studentAssignments");
+const submitAssignments = require("./routes/assignment/submitAssignment");
+
+
+
 
 //root end-points
 app.use("/",home);
@@ -31,6 +35,7 @@ app.use("/assignmentList",courseAssignments);
 //assignment end-points
 app.use("/createAssignment",createAssignment);
 app.use("/deleteAssignment",deleteAssignment);
+app.use("/submitAssignment",submitAssignments);
 
 
 
