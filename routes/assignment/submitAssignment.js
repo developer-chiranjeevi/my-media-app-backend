@@ -10,6 +10,7 @@ router.post('/',async(request,response) =>{
     let docId;
     let course_id;
     let assignmentsubmissions;
+    let studentDocId;
 
     try{
         //creating a reference to the the student profile collection
@@ -29,7 +30,7 @@ router.post('/',async(request,response) =>{
         }else{
 
 
-            //fetching course id
+        //fetching course id
         await assignmentQuery.forEach((doc) =>{
             course_id = doc.data().course_id;
         })
@@ -52,7 +53,23 @@ router.post('/',async(request,response) =>{
                 const res = await assignmentCollection.doc(docId).set({
                     submissions:submissions,
                 },{merge:true})
-    
+                
+                //fetching doc ID of the student profile
+                studentQuery.forEach((doc) =>{
+                    studentDocId = doc.id;
+                    
+                });
+                //make a entry in students profile sub collection
+                await studentCollection.doc(studentDocId).collection("SUBMISSIONS").doc(request.body.assignment_id).set({
+                    course_id:course_id,
+                    resource_url:"https://sampledoc.com",
+                    scores_awarded:0,
+                    isEvaluated:false,
+                    
+                })
+
+
+
                 response.json({message:"assignment submitted successfully"}).status(200);
             }else{
                 response.json({message:"invalid roll number or assignment number"}).status(404);

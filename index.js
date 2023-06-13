@@ -17,7 +17,7 @@ const deleteAssignment = require("./routes/assignment/deleteAssignment");
 const courseAssignments = require("./routes/course/courseAssignments");
 const studentAssignments = require("./routes/student/studentAssignments");
 const submitAssignments = require("./routes/assignment/submitAssignment");
-
+const submissionList = require("./routes/student/submissionList");
 
 
 
@@ -27,15 +27,16 @@ app.use("/",home);
 app.use("/createstudent",createStudent);
 app.use("/deletestudent",deleteStudent);
 app.use("/enrollstudent",enrollStudent);
-app.use("/studentAssignments",studentAssignments);
+app.use("/studentassignments",studentAssignments);
+app.use("/submissionlist",submissionList);
 //course end-points
-app.use("/createCourse",createCourse);
-app.use("/studentList",studentList);
-app.use("/assignmentList",courseAssignments);
+app.use("/createcourse",createCourse);
+app.use("/studentlist",studentList);
+app.use("/assignmentlist",courseAssignments);
 //assignment end-points
-app.use("/createAssignment",createAssignment);
-app.use("/deleteAssignment",deleteAssignment);
-app.use("/submitAssignment",submitAssignments);
+app.use("/createassignment",createAssignment);
+app.use("/deleteassignment",deleteAssignment);
+app.use("/submitassignment",submitAssignments);
 
 
 
