@@ -17,10 +17,10 @@ router.delete('/',async(request,response) =>{
             });    
         }else{
             //if user doesn't exists send error message
-            response.json({message:"student with the particular roll number doesn't exists"}).status(409);
+            response.json({message:"student with the particular roll number doesn't exists"}).status(400);
         }
     }catch(error){
-        response.json({message:error.message}).status(400);
+        response.json({message:error.message}).status(500);
     }
 });
 

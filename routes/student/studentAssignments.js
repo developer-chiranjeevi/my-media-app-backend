@@ -19,7 +19,7 @@ router.get('/',async(request,response) =>{
            
         }else{
             //if invalid roll number send error message
-            response.json({message:"Invalid Student Roll Number"}).status(404);
+            response.json({message:"Invalid Student Roll Number"}).status(400);
         }
         //fetching the array of assignments for the following course
         for(let i = 0;i<courses.length;i++){
@@ -37,10 +37,10 @@ router.get('/',async(request,response) =>{
                 });
             }
         }
-        response.json({assignments:assignments});
+        response.json({assignments:assignments}).status(200);
 
     }catch(error){
-        response.json({message:error.messsage});
+        response.json({message:error.messsage}).status(500);
     }
 });
 

@@ -8,7 +8,7 @@ router.post('/',createProfile,(request,response) =>{
 });
 
 async function createProfile(request,response,next){
-    const rollNo = request.body.roll_no
+    const rollNo = request.body.roll_no;
     const collectionRef = firestore.collection('STUDENT-PROFILE');
     
     try{
@@ -21,7 +21,7 @@ async function createProfile(request,response,next){
                 const res = await firestore.collection('STUDENT-PROFILE').doc().set(data);
                 response.json({message:res}).status(200);
             }catch(error){
-                response.status(400).json({message:error.message});
+                response.status(500).json({message:error.message});
                 
             };
             next();
@@ -30,7 +30,7 @@ async function createProfile(request,response,next){
             response.json({message:"student with the following roll number already exists"}).status(409);
         }
     } catch(error){
-        response.json({message:error.message}).status(400);
+        response.json({message:error.message}).status(500);
         next();
     }    
 };
